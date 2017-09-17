@@ -24,7 +24,6 @@ export class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to Service</h2>
         </div>
         <p className="App-intro">
           {this.props.children}
@@ -38,33 +37,48 @@ export class App extends Component {
 export class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {password: '',account:''};
+    this.state = {pwd: '',account:'',result:'登入'};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleChange(event) {
-    this.setState({password: event.target.password});
-    this.setState({account: event.target.account});
+    const target = event.target;
+    const name = target.name;
+    this.setState({
+      [name]: event.target.value
+    });
   }
+
   handleSubmit(event) {
-    if(this.state.password=='123'&&this.state.account=='123'){
+    event.preventDefault();
+    if(this.state.pwd=='123'&&this.state.account=='123'){
       // this.result='登入成功'
-      this.transitionTo('/Content');
+      console.log('登入成功')
+      this.transitionTo('/content');
     }
     else{
-      this.result='登入失敗'
-      event.preventDefault();
+      console.log(this.state.pwd)
+      console.log(this.state.account)
+      this.setState({result: '登入失敗'});
     }
   }
+
   render() {
     return (
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.account} onChange={this.handleChange} /><br />
-          <input type="password" value={this.state.password} onChange={this.handleChange} /><br />
-          <input type="submit" value="login" />
-          <input type="button" value="regist" onClick={this.transitionTo('/regist')} /><br />
-           {this.result}
-        </form>
+      <form onSubmit={this.handleSubmit} method='post'>
+        <h5>{this.state.result}</h5>
+        <label>
+          <input type="text" name="account" value={this.state.account} onChange={this.handleChange} />
+        </label>
+        <label>  
+          <input type="password" name="pwd" value={this.state.pwd} onChange={this.handleChange} />
+        </label>
+        <p>
+        <input type="submit" value="Submit" />
+        <input type="button" value="Regist" />
+        </p>
+      </form>
     );
   }
 }
@@ -75,7 +89,7 @@ export class Content extends Component {
       <div>
         登入成功
         <br />
-        <input type="button" value="logout" onClick={this.transitionTo('/')} />
+        <input type="button" value="logout"  />
       </div>  
     );
   }
@@ -84,34 +98,39 @@ export class Content extends Component {
 export class Regist extends Component {
   constructor(props) {
     super(props);
-    this.state = {password: '',account:''};
+    this.state = {pwd: '',account:'',result:'註冊'};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleChange(event) {
-    this.setState({password: event.target.password});
-    this.setState({account: event.target.account});
+    const target = event.target;
+    const name = target.name;
+    this.setState({
+      [name]: event.target.value
+    });
   }
+
   handleSubmit(event) {
-    if(this.state.password!=''&&this.state.account!=''&&
-      this.state.account!=undefined&&this.state.account!=undefined){
+    event.preventDefault();
+    if(this.state.password=='123'&&this.state.account=='123'){
       // this.result='登入成功'
-      this.transitionTo('/Content');
+      this.transitionTo('/content');
     }
     else{
-      this.result='註冊失敗'
-      event.preventDefault();
+      this.setState({result: '註冊失敗'});
     }
   }
+
   render() {
     return (
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.account} onChange={this.handleChange} /><br />
-          <input type="password" value={this.state.password} onChange={this.handleChange} /><br />
-          <input type="submit" value="login" />
-          <input type="button" value="regist" onClick={this.transitionTo('/regist')} /><br />
-           {this.result}
-        </form>
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          <input type="text" name="account" value={this.state.account} onChange={this.handleChange} />
+          <input type="password" name="pwd" value={this.state.pwd} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
     );
   }
 }
