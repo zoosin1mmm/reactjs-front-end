@@ -8,7 +8,7 @@ import {
   Switch
 } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
-import { App , Login, Content} from './App';
+import { App , Login, Content, Regist} from './App';
 
 // browserHistory
 ReactDOM.render((
@@ -17,6 +17,7 @@ ReactDOM.render((
 	     <Switch>
 		     <Route exact path="/" component={Login} />
 		     <Route path="/content" component={Content} />
+		     <Route path="/regist" component={Regist} />
 	     </Switch>
 	   </Router>
    </App>
