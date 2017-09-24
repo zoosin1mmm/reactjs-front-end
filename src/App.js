@@ -3,17 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import {Link} from 'react-router-dom'
 //npm install react-router-dom
-// class View extends Component {
-//    constructor(props) {
-//     super(props);
-//   }
-//   render() {
-//     return (
-//       <App><content><Login /></content></App>
-//     );
-//   }
-// }
-// export default View;
 
 export class App extends Component {
    constructor(props) {
@@ -54,8 +43,9 @@ export class Login extends Component {
     event.preventDefault();
     if(this.state.pwd=='123'&&this.state.account=='123'){
       // this.result='登入成功'
-      console.log('登入成功')
-      this.transitionTo('/content');
+      // console.log('登入成功')
+      this.props.history.push('/content')
+      // this.transitionTo('/content');
     }
     else{
       console.log(this.state.pwd)
@@ -89,7 +79,7 @@ export class Content extends Component {
       <div>
         登入成功
         <br />
-        <input type="button" value="logout"  />
+        <input type="button" value="logout" onClick={this.props.history.push('/')} />
       </div>  
     );
   }
@@ -115,7 +105,7 @@ export class Regist extends Component {
     event.preventDefault();
     if(this.state.password=='123'&&this.state.account=='123'){
       // this.result='登入成功'
-      this.transitionTo('/content');
+      this.props.history.push('/content')
     }
     else{
       this.setState({result: '註冊失敗'});
