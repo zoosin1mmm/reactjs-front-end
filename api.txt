@@ -1,0 +1,6 @@
+// Send: curl -X POST http://boiling-hamlet-95378.herokuapp.com/api/login -H 'content-type: application/json' -d '{"username": "testing", "password": "1234eszxcv"}'
+// Recv:
+// {"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImV4cCI6MTUwNTY0NjI3N30.J7Ojq3hb3SXBOTmuOq1IhfxTwtat0-4fKLZs3GvPeMI"}
+
+// Send: curl -X GET http://boiling-hamlet-95378.herokuapp.com/users/me -H 'authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImV4cCI6MTUwNTY0NjI3N30.J7Ojq3hb3SXBOTmuOq1IhfxTwtat0-4fKLZs3GvPeMI'
+// Recv: {"username":"testing","id":1}

@@ -1,0 +1,4 @@
+Failed to load http://boiling-hamlet-95378.herokuapp.com/api/login: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://localhost:3000' is therefore not allowed access.
+App.js:69 Error: Network Error
+    at createError (createError.js:16)
+    at XMLHttpRequest.handleError (xhr.js:87)
